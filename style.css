@@ -132,11 +132,11 @@ header.site-header.scrolled .nav-brand img { height: 38px; }
 .nav-toggle span {
   display: block; width: 22px; height: 2px;
   background: var(--crystal); border-radius: 2px;
-  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.2s, opacity 0.2s;
 }
-.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* Some o hambúrguer quando o menu abre — o X dedicado (.nav-close) assume
+   a função de fechar, evitando dois controles de fechar sobrepostos. */
+.nav-toggle[aria-expanded="true"] { opacity: 0; pointer-events: none; }
 
 .nav-close {
   display: none;
