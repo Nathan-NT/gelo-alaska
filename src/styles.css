@@ -192,6 +192,16 @@ h2 {
     transform:translateY(-7px) rotate(-45deg);
 }
 
+.dr-links {
+    display:contents;
+}
+.dr-head,.dr-info,.dr-foot,.scrim {
+    display:none;
+}
+.nav a.l .ico,.nav .btn .ico {
+    display:none;
+}
+
 /* =========================================================
    6. SEÇÃO PRINCIPAL (HERO)
    ========================================================= */
@@ -654,38 +664,138 @@ footer .c a:hover {
     .burger {
         display:block;
     }
-    .nav {
-        position:absolute;
-        left:0;
+        .nav {
+        position:fixed;
+        top:0;
         right:0;
-        top:100%;
+        bottom:0;
+        width:min(320px,86vw);
+        z-index:2;
+        display:flex;
         flex-direction:column;
         align-items:stretch;
         gap:0;
-        background:var(--navy);
-        padding:8px 20px 20px;
-        border-bottom:1px solid rgba(80,229,238,.25);
-        max-height:0;
-        overflow:hidden;
+        padding:max(20px,env(safe-area-inset-top,0px)) 22px max(20px,env(safe-area-inset-bottom,0px));
+        background:linear-gradient(180deg,var(--navy),var(--deep));
+        border-left:1px solid rgba(80,229,238,.25);
+        border-radius:22px 0 0 22px;
+        box-shadow:-20px 0 50px rgba(0,0,0,.4);
+        overflow-y:auto;
+        transform:translateX(105%);
         visibility:hidden;
-        opacity:0;
-        padding-block:0;
-        transition:max-height .3s,opacity .25s,visibility .3s;
+        transition:transform .3s ease,visibility .3s;
     }
     .nav.open {
-        max-height:520px;
+        transform:none;
+        visibility:visible;
+    }
+    .scrim {
+        display:block;
+        position:fixed;
+        inset:0;
+        z-index:1;
+        background:rgba(3,22,47,.6);
+        opacity:0;
+        visibility:hidden;
+        transition:opacity .3s,visibility .3s;
+    }
+    .scrim.show {
         opacity:1;
         visibility:visible;
-        padding-block:8px 20px;
+    }
+    .dr-head {
+        display:block;
+        position:relative;
+        text-align:center;
+        padding-bottom:18px;
+    }
+    .dr-head img {
+        height:92px;
+        width:auto;
+        margin:0 auto 10px;
+    }
+    .dr-head p {
+        font-size:.72rem;
+        letter-spacing:.22em;
+        text-transform:uppercase;
+        color:var(--cyan);
+        line-height:1.6;
+    }
+    .dr-close {
+        position:absolute;
+        top:0;
+        right:-6px;
+        width:44px;
+        height:44px;
+        display:grid;
+        place-items:center;
+        background:none;
+        border:0;
+        color:#fff;
+        cursor:pointer;
+    }
+    .dr-links {
+        display:flex;
+        flex-direction:column;
+        gap:4px;
+        margin-bottom:14px;
     }
     .nav a.l {
-        padding:14px 4px;
-        font-size:1.1rem;
-        border-bottom:1px solid rgba(255,255,255,.1);
+        display:flex;
+        align-items:center;
+        gap:16px;
+        padding:14px 16px;
+        font-size:1rem;
+        letter-spacing:.04em;
+        text-transform:uppercase;
+        border:0;
+        border-radius:12px;
+    }
+    .nav a.l .ico {
+        display:block;
+        width:26px;
+        height:26px;
+    }
+    .nav a.l.on,.nav a.l:hover {
+        background:linear-gradient(90deg,rgba(0,191,234,.3),rgba(0,191,234,.05));
+        box-shadow:inset 3px 0 0 var(--cyan);
+    }
+    .dr-info {
+        display:grid;
+        gap:12px;
+        border-top:1px solid rgba(80,229,238,.25);
+        padding-top:18px;
+        margin-bottom:20px;
+        font-size:.88rem;
+        color:#e3f1fa;
+    }
+    .dr-info a,.dr-info div {
+        display:flex;
+        align-items:center;
+        gap:12px;
+        text-decoration:none;
+    }
+    .dr-info .ico {
+        width:20px;
+        height:20px;
+        color:#fff;
     }
     .nav .btn {
-        margin-top:14px;
         min-height:52px;
+        justify-content:space-between;
+        padding-inline:20px;
+    }
+    .nav .btn .ico {
+        display:block;
+    }
+    .dr-foot {
+        display:block;
+        margin-top:auto;
+        padding-top:26px;
+        font-size:1.4rem;
+        font-style:italic;
+        color:var(--cyan);
+        transform:rotate(-4deg);
     }
     .hero:before {
         background:linear-gradient(180deg,rgba(3,22,47,.8),rgba(3,22,47,.6) 45%,rgba(3,22,47,.88));
