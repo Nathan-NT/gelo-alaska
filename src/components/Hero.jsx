@@ -1,4 +1,5 @@
 import hero from '../assets/hero.webp'
+import heroMobile from '../assets/hero-mobile.png'
 import Icon from './Icon.jsx'
 import { wa } from '../lib/whatsapp.js'
 
@@ -12,6 +13,7 @@ export default function Hero() {
   return (
     <section className="hero" id="inicio">
       <picture>
+        <source media="(max-width: 960px)" srcSet={heroMobile} />
         <img
           className="bg"
           src={hero}
